@@ -1,44 +1,88 @@
 <?php
 session_start();
 
-$validUsername = "amresh";
-$validPassword = "8624807723";
+// Set timeout duration in seconds (e.g., 60 seconds)
+$timeout_duration = 60;
 
+// Initialize attempts if not set
 if (!isset($_SESSION['attempts'])) {
     $_SESSION['attempts'] = 0;
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'] ?? '';
-    $password = $_POST['password'] ?? '';
-
-    if ($_SESSION['attempts'] < 3) {
-        if ($username === $validUsername && $password === $validPassword) {
-            $_SESSION['attempts'] = 0;
-            $_SESSION['authenticated'] = true;
-            echo "<h2>Welcome, $username!</h2>";
-            echo "<form method='post' action='logout.php'>
-                    <button type='submit'>Logout</button>
-                  </form>";
-            exit;
-        } else {
-            $_SESSION['attempts']++;
-            $remainingAttempts = 3 - $_SESSION['attempts'];
-            echo "<p style='color: red;'>Incorrect username or password. You have $remainingAttempts attempt(s) remaining.</p>";
-        }
-    } else {
-        echo "<p style='color: red;'>Maximum login attempts exceeded. Please try again later.</p>";
+// Check if timeout has passed
+if (isset($_SESSION['lock_time'])) {
+    $time_elapsed = time() - $_SESSION['lock_time'];
+    if ($time_elapsed >= $timeout_duration) {
+        // Reset attempts after timeout
+        $_SESSION['attempts'] = 0;
+        unset($_SESSION['lock_time']);
     }
 }
 
-if (!isset($_SESSION['authenticated']) || !$_SESSION['authenticated']) {
-    echo "<form method='post' action=''>
-            <label for='username'>Username:</label>
-            <input type='text' id='username' name='username' required><br><br>
-            <label for='password'>Password:</label>
-            <input type='password' id='password' name='password' required><br><br>
-            <button type='submit'>Login</button>
-          </form>";
-}
+// Hardcoded valid credentials
+$valid_username = "amresh";
+$valid_password = "8624807723";
 
+// Handle form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SESSION['attempts'] < 3) {
+        $username = $_POST['username'] ?? '';
+        $password = $_POST['password'] ?? '';
+
+        if ($username === $valid_username && $password === $valid_password) {
+            // Successful login
+            $_SESSION['attempts'] = 0;
+            $_SESSION['loggedin'] = true;
+            header("Location: C1-2.php");
+            exit();
+        } else {
+            // Invalid credentials
+            $_SESSION['attempts']++;
+
+            if ($_SESSION['attempts'] >= 3) {
+                $_SESSION['lock_time'] = time();  // Start lock timer
+                $error = "Too many failed attempts. Please try again after $timeout_duration seconds.";
+            } else {
+                $remaining_attempts = 3 - $_SESSION['attempts'];
+                $error = "Invalid credentials. $remaining_attempts attempt(s) left.";
+            }
+        }
+    } else {
+        $remaining_time = $timeout_duration - (time() - $_SESSION['lock_time']);
+        $error = "Account locked. Try again in $remaining_time second(s).";
+    }
+}
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form with Timeout</title>
+</head>
+<body>
+    <h2>Login</h2>
+
+    <?php
+    if (isset($error)) {
+        echo "<p style='color:red;'>$error</p>";
+    }
+
+    // Show form only if not locked
+    if ($_SESSION['attempts'] < 3) {
+    ?>
+        <form method="post" action="">
+            <label>Username:</label>
+            <input type="text" name="username" required><br><br>
+
+            <label>Password:</label>
+            <input type="password" name="password" required><br><br>
+
+            <input type="submit" value="Login">
+        </form>
+    <?php
+    } else {
+        echo "<p>Please wait and try again later.</p>";
+    }
+    ?>
+</body>
+</html>
