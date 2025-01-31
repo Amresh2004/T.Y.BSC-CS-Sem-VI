@@ -1,9 +1,7 @@
 <?php
-// Load the XML file
 $xml = simplexml_load_file("book.xml") or die("Error: Cannot load XML file");
-
-// Display elements
-foreach ($xml->book as $book) {
+foreach ($xml->book as $book) 
+{
     echo "<b>Book Details:</b><br>";
     echo "Book No: " . $book->bookno . "<br>";
     echo "Title: " . $book->bookname . "<br>";
