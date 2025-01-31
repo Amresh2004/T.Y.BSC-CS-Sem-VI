@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Items>
+    <Item>
+        <ItemName>Gold Ring</ItemName>
+        <ItemPrice>500</ItemPrice>
+        <Quantity>10</Quantity>
+    </Item>
+    <Item>
+        <ItemName>Silver Necklace</ItemName>
+        <ItemPrice>300</ItemPrice>
+        <Quantity>5</Quantity>
+    </Item>
+    <Item>
+        <ItemName>Diamond Earrings</ItemName>
+        <ItemPrice>1000</ItemPrice>
+        <Quantity>2</Quantity>
+    </Item>
+    <Item>
+        <ItemName>Platinum Bracelet</ItemName>
+        <ItemPrice>800</ItemPrice>
+        <Quantity>3</Quantity>
+    </Item>
+    <Item>
+        <ItemName>Pearl Pendant</ItemName>
+        <ItemPrice>400</ItemPrice>
+        <Quantity>7</Quantity>
+    </Item>
+</Items>
