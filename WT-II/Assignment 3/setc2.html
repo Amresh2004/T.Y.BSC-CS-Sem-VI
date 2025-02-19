@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Remove an HTML Element using JavaScript?</title>
+    <style>
+        #GFG_DIV {
+            background: pink;
+            height: 100px;
+            width: 200px;
+            margin: 0 auto;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body style="text-align:center;">
+
+    <h1 style="color:blue;">I am a student of TYBCS</h1>
+    <p id="GFG_UP" style="font-size: 19px; font-weight: bold;"></p>
+
+    <!-- Div Box -->
+    <div id="GFG_DIV">This is a Div box.</div>
+    <br>
+
+    <!-- Button to remove div -->
+    <button onclick="GFG_Fun()">Click Here</button>
+
+    <p id="selector" style="color: green; font-size: 24px; font-weight: bold;"></p>
+
+    <!-- JavaScript Script -->
+    <script>
+        var up = document.getElementById('GFG_UP');
+        var down = document.getElementById('selector');
+        var div = document.getElementById('GFG_DIV');
+
+        function GFG_Fun() {
+            if (div) {
+                div.remove(); // Removes the div element
+                down.innerHTML = "Div has been removed!";
+            } else {
+                down.innerHTML = "Div is already removed.";
+            }
+        }
+    </script>
+
+</body>
+</html>
