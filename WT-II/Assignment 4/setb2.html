@@ -1,0 +1,21 @@
+<html>
+    <body>
+        <script>
+            function display() {
+            var x=new XMLHttpRequest();
+            var n= document.getElementById("n").value;
+            x.open("GET","setb2.php?n="+n,true);
+            x.send();
+            x.onreadystatechange=function(){
+                if(x.readyState==4 && x.status==200){
+                    document.getElementById("i").innerHTML=x.responseText;
+                }
+            }
+        }
+        </script>
+        Customer Name:<input type="text" name="n" id="n">
+        <br>
+        <button onclick="display()">Display</button>
+        <h1 id="i"></h1>
+    </body>
+</html>

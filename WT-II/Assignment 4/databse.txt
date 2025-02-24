@@ -1,0 +1,42 @@
+CREATE TABLE Teacher (
+    tno SERIAL PRIMARY KEY,
+    tname VARCHAR(100) NOT NULL,
+    qul VARCHAR(50) NOT NULL,
+    salary INT NOT NULL
+);
+
+INSERT INTO Teacher (tname, qul, salary) VALUES
+('shubhangi Maam', 'Bsc(cs)', 60000),
+('ashwini Maam', 'Bsc(cs)', 60000),
+('pallavi Maam', 'Bsc(cs)', 60000),
+('sherya Maam', 'Bsc(cs)', 500000),
+('rupali Maam', 'Bsc(cs)', 60000);
+
+SELECT * FROM Teacher;
+
+
+
+CREATE TABLE Customer (
+    cno INT PRIMARY KEY,
+    cname VARCHAR(200),
+    city VARCHAR(200)
+);
+
+
+CREATE TABLE order1 (
+    ono INT PRIMARY KEY,
+    odate DATE,
+    shipadd VARCHAR(200),
+    cno INT,
+    CONSTRAINT fk_customer FOREIGN KEY (cno) REFERENCES Customer(cno)
+);
+
+INSERT INTO order1 (ono, odate, shipadd, cno) VALUES
+(1, '2022-05-21', 'Vadgaon Sheri', 1),
+(2, '2022-05-28', 'Kondhwa', 2),
+(3, '2022-05-28', 'Pune', 3);
+
+INSERT INTO Customer (cno, cname, city) VALUES
+(1, 'amresh', 'Kondgwa'),
+(2, 'shubham', 'Pune'),
+(3, 'mitesh', 'Vadgaon Sheri');
