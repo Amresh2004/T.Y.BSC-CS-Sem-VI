@@ -59,6 +59,9 @@ int main(int argc, char *argv[])
     return 0;
 }
 
+// OUTPUT: Total sum of 1000 random numbers: 48988
+
+
 
 /*#include <mpi.h>
 #include <stdio.h>
