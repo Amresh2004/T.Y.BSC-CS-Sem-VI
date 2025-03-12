@@ -1,7 +1,7 @@
-// sudo apt install openmpi-bin openmpi-common libopenmpi-dev
-// vim SetA1.c
-// mpicc -o SetA1 SetA1.c
-// mpirun -np 4 ./SetA1
+// amresh2004@Amresh:~$ sudo apt install openmpi-bin openmpi-common libopenmpi-dev
+// amresh2004@Amresh:~$ vim SetA1.c
+// amresh2004@Amresh:~$ mpicc -o SetA1 SetA1.c
+// amresh2004@Amresh:~$ mpirun -np 4 ./SetA1
 
 #include <mpi.h>
 #include <stdio.h>
