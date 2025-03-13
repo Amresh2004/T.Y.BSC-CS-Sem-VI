@@ -1,6 +1,13 @@
 // amresh2004@Amresh:~$ sudo apt install openmpi-bin openmpi-common libopenmpi-dev
+// amresh2004@Amresh:~$ sudo dnf install epel-release
+// amresh2004@Amresh:~$ sudo dnf install openmpi openmpi-devel
+// amresh2004@Amresh:~$ mpicc --version
+// amresh2004@Amresh:~$ su -c 'dnf install sudo'
+// amresh2004@Amresh:~$ module load mpi/openmpi-x86_64
+// amresh2004@Amresh:~$ which mpicc
 // amresh2004@Amresh:~$ vim SetA2.c
 // amresh2004@Amresh:~$ mpicc -o SetA2 SetA2.c
+// amresh2004@Amresh:~$ mpirun --allow-run-as-root -np 4 ./SetA2
 // amresh2004@Amresh:~$ mpirun -np 4 ./SetA2
 
 #include <mpi.h>
