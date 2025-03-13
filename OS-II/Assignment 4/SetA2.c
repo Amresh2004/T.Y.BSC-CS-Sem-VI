@@ -6,9 +6,8 @@
 // amresh2004@Amresh:~$ module load mpi/openmpi-x86_64
 // amresh2004@Amresh:~$ which mpicc
 // amresh2004@Amresh:~$ vim SetA2.c
-// amresh2004@Amresh:~$ mpicc -o SetA2 SetA2.c
-// amresh2004@Amresh:~$ mpirun --allow-run-as-root -np 4 ./SetA2
-// amresh2004@Amresh:~$ mpirun -np 4 ./SetA2
+// amresh2004@Amresh:~$ mpicc SetA2.c
+// amresh2004@Amresh:~$ ./a.out
 
 #include <mpi.h>
 #include <stdio.h>
