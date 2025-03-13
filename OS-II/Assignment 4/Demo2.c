@@ -1,3 +1,14 @@
+// amresh2004@Amresh:~$ sudo apt install openmpi-bin openmpi-common libopenmpi-dev
+// amresh2004@Amresh:~$ sudo dnf install epel-release
+// amresh2004@Amresh:~$ sudo dnf install openmpi openmpi-devel
+// amresh2004@Amresh:~$ mpicc --version
+// amresh2004@Amresh:~$ su -c 'dnf install sudo'
+// amresh2004@Amresh:~$ module load mpi/openmpi-x86_64
+// amresh2004@Amresh:~$ which mpicc
+// amresh2004@Amresh:~$ vim Demo2.c
+// amresh2004@Amresh:~$ mpicc Demo2.c
+// amresh2004@Amresh:~$ ./a.out
+
 #include<stdio.h>
 #include<mpi.h>
 #include<string.h>
