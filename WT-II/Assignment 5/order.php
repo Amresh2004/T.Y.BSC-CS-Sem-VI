@@ -1,5 +1,4 @@
-<?php
-// Set cookies with personal details from previous form
+<?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     setcookie("name", $_POST['name'], time() + 3600);
     setcookie("age", $_POST['age'], time() + 3600);
