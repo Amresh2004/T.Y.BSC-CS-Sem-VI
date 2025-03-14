@@ -1,18 +1,15 @@
-<?php
-// Connect to PostgreSQL database
+<?php
 $host = "localhost";
 $dbname = "amresh";
 $user = "postgres";
-$password = "8624807723"; // Replace with your PostgreSQL password
+$password = "8624807723";
 
 $conn = pg_connect("host=$host dbname=$dbname user=$user password=$password");
-
-// Check connection
+
 if (!$conn) {
     die("Connection failed: " . pg_last_error());
 }
-
-// Fetch student data
+
 $sql = "SELECT * FROM student ORDER BY rollno ASC";
 $result = pg_query($conn, $sql);
 
@@ -28,8 +25,6 @@ if (pg_num_rows($result) > 0) {
     echo "<tr><td colspan='3'>No records found</td></tr>";
 }
 
-echo "</table>";
-
-// Close the connection
+echo "</table>";
 pg_close($conn);
 ?>
