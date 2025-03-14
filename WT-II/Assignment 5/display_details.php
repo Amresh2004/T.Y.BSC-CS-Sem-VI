@@ -1,5 +1,4 @@
-<?php
-// Retrieve cookies and order details
+<?php
 $name = isset($_COOKIE['name']) ? $_COOKIE['name'] : "Not set";
 $age = isset($_COOKIE['age']) ? $_COOKIE['age'] : "Not set";
 $address = isset($_COOKIE['address']) ? $_COOKIE['address'] : "Not set";
