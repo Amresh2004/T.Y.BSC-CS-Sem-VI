@@ -1,7 +1,5 @@
 <?php
-session_start(); // Start the session
-
-// Store Employee details from Page 1 into session variables
+session_start(); 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['eno'] = $_POST['eno'];
     $_SESSION['ename'] = $_POST['ename'];
