@@ -1,9 +1,8 @@
-<?php
-// Connect to PostgreSQL database
+<?php
 $host = "localhost";
 $dbname = "amresh";
 $user = "postgres";
-$password = "8624807723"; // Replace with your PostgreSQL password
+$password = "8624807723";
 
 $conn = pg_connect("host=$host dbname=$dbname user=$user password=$password");
 
@@ -11,8 +10,7 @@ $conn = pg_connect("host=$host dbname=$dbname user=$user password=$password");
 if (!$conn) {
     die("Connection failed: " . pg_last_error());
 }
-
-// Insert 5 more records (if not inserted already)
+
 $sql = "INSERT INTO student (rollno, name, class) VALUES 
 (1001,'Frank', '10A'),
 (200,'Grace', '10B'),
@@ -27,7 +25,6 @@ if ($result) {
 } else {
     echo "Error: " . pg_last_error();
 }
-
-// Close the connection
+
 pg_close($conn);
 ?>
