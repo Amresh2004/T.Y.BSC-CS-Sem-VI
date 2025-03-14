@@ -1,17 +1,14 @@
 <?php
-session_start(); // Start the session
+session_start(); 
 
-// Retrieve employee details from session
 $eno = $_SESSION['eno'];
 $ename = $_SESSION['ename'];
 $address = $_SESSION['address'];
-
-// Retrieve earnings from form
+
 $basic = $_POST['basic'];
 $da = $_POST['da'];
 $hra = $_POST['hra'];
-
-// Calculate total salary
+
 $total = $basic + $da + $hra;
 ?>
 
